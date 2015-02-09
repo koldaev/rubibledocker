@@ -4,6 +4,7 @@ MAINTAINER Maksim Koldaev <mail@koldaev.com>
 RUN mkdir /soft
 
 ADD ./50bibles.tar.gz /soft/50bibles.tar.gz
+ADD my.cnf /etc/mysql/my.cnf 
 
 # Install MySQL.
 RUN \
