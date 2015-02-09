@@ -11,6 +11,7 @@ RUN \
   echo "mysqld_safe &" > /tmp/config && \
   echo "mysqladmin --silent --wait=30 ping || exit 1" >> /tmp/config && \
   echo "mysqladmin create 50bibles || exit 1" >> /tmp/config && \
+  echo "mysql 50bibles < /soft/50bibles.tar.gz/50bibles.sql  || exit 1" >> /tmp/config && \
   echo "mysql -e 'GRANT ALL PRIVILEGES ON *.* TO \"root\"@\"%\" WITH GRANT OPTION;'" >> /tmp/config && \
   bash /tmp/config && \
   rm -f /tmp/config
