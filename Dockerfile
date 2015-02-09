@@ -1,6 +1,10 @@
 FROM debian:latest
 MAINTAINER Maksim Koldaev <mail@koldaev.com>
 
+RUN mkdir /soft
+
+ADD ./50bibles.tar.gz /soft/50bibles.tar.gz
+
 # Install MySQL.
 RUN \
   apt-get update && \
@@ -24,10 +28,6 @@ WORKDIR /data
 
 # Define default command.
 CMD ["mysqld_safe"]
-
-RUN mkdir /soft
-
-ADD ./50bibles.tar.gz /soft/50bibles.tar.gz
 
 # Expose ports.
 EXPOSE 3306
