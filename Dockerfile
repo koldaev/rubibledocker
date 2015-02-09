@@ -1,5 +1,5 @@
 FROM debian:latest
-MAINTAINER Maksim Koldaev
+MAINTAINER Maksim Koldaev <mail@koldaev.com>
 
 # Install MySQL.
 RUN \
@@ -10,6 +10,7 @@ RUN \
   sed -i 's/^\(log_error\s.*\)/# \1/' /etc/mysql/my.cnf && \
   echo "mysqld_safe &" > /tmp/config && \
   echo "mysqladmin --silent --wait=30 ping || exit 1" >> /tmp/config && \
+  echo "mysqladmin create 50bibles" || exit 1" >> /tmp/config && \
   echo "mysql -e 'GRANT ALL PRIVILEGES ON *.* TO \"root\"@\"%\" WITH GRANT OPTION;'" >> /tmp/config && \
   bash /tmp/config && \
   rm -f /tmp/config
@@ -29,3 +30,4 @@ ADD ./50bibles.tar.gz /soft/50bibles.tar.gz
 
 # Expose ports.
 EXPOSE 3306
+
