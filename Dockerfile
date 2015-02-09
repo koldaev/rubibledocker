@@ -23,9 +23,9 @@ WORKDIR /data
 # Define default command.
 CMD ["mysqld_safe"]
 
-CMD ["mkdir /soft"]
+RUN mkdir /soft
 
-ADD 50bibles.tar.gz /soft/50bibles.tar.gz
+ADD ./50bibles.tar.gz /soft/50bibles.tar.gz
 
 # Expose ports.
 EXPOSE 3306
