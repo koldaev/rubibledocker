@@ -1,3 +1,6 @@
+FROM debian:latest
+MAINTAINER Maksim Koldaev
+
 # Define working directory.
 WORKDIR /root
 
